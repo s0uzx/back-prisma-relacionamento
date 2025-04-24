@@ -106,7 +106,7 @@ class CollectionController {
         return res.status(404).json({ error: "Coleção não encontrada" });
       }
 
-      res.status(200).json({error: "Coleção não encontrada"});
+      res.status(200).json({error: "Coleção deletada com sucesso"});
     } catch (error) {
       console.error("Erro ao remover coleção:", error);
       res.status(500).json({ error: "Erro ao remover coleção" });

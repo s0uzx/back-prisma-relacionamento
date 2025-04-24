@@ -65,7 +65,7 @@ class CardController {
       res.status(201).json({
         message: "Carta criada com sucesso",
         newCard});
-        
+
     } catch (error) {
       console.error("Erro ao criar carta:", error);
       res.status(500).json({ error: "Erro ao criar carta" });
@@ -108,7 +108,7 @@ class CardController {
   }
 
   // DELETE /cartas/:id
-  async deleteCollection(req, res) {
+  async deleteCard(req, res) {
     try {
       const { id } = req.params;
 
