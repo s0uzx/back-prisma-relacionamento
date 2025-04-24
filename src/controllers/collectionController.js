@@ -17,20 +17,20 @@ class CollectionController {
     try {
       const { id } = req.params;
 
-      const personagem = await CollectionModel.findById(id);
+      const colecao = await CollectionModel.findById(id);
 
-      if (!personagem) {
-        return res.status(404).json({ error: "Personagem não encontrado" });
+      if (!colecao) {
+        return res.status(404).json({ error: "Coleção não encontrada" });
       }
 
-      res.json(personagem);
+      res.json(colecao);
     } catch (error) {
-      console.error("Erro ao buscar personagem:", error);
-      res.status(500).json({ error: "Erro ao buscar personagem" });
+      console.error("Erro ao buscar coleção:", error);
+      res.status(500).json({ error: "Erro ao buscar coleção" });
     }
   }
 
-  // POST /api/colecoes
+  // POST /colecoes
   async createCollection(req, res) {
     try {
       // Validação básica
@@ -56,7 +56,9 @@ class CollectionController {
         return res.status(400).json({ error: "Erro ao criar coleção" });
       }
 
-      res.status(201).json(newCollection);
+      res.status(201).json({
+        message: "Coleção criada com sucesso",
+        newCollection});
     } catch (error) {
       console.error("Erro ao criar coleção:", error);
       res.status(500).json({ error: "Erro ao criar coleção" });
@@ -64,18 +66,13 @@ class CollectionController {
   }
 
   // PUT /api/personagens/:id
-  async updatePersonagem(req, res) {
+  async updateCollection(req, res) {
     try {
       const { id } = req.params;
       const {
-        title,
+        name,
         description,
-        episodes,
         releaseYear,
-        studio,
-        genres,
-        rating,
-        imageUrl,
       } = req.body;
 
       // Atualizar o personagem

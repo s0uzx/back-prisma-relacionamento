@@ -19,13 +19,13 @@ class CollectionModel {
 
   // Obter uma coleção pelo ID
   async findById(id) {
-    const personagem = await prisma.personagem.findUnique({
+    const colecao = await prisma.collection.findUnique({
       where: {
         id: Number(id),
       },
     });
 
-    return personagem;
+    return colecao;
   }
 
   // Criar uma nova coleção
@@ -34,7 +34,7 @@ class CollectionModel {
     description,
     releaseYear,
   ) {
-    const newCollection = await prisma.collection.create({
+    const novaColecao = await prisma.collection.create({
       data: {
         name,
         description,
@@ -42,7 +42,7 @@ class CollectionModel {
       },
     });
 
-    return newCollection;
+    return novaColecao;
   }
 
   // Atualizar um personagem
